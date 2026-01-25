@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, memo } from "react"
 import { Github, Linkedin, Mail, ExternalLink, Instagram, Sparkles } from "lucide-react"
-import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -92,7 +91,6 @@ const Home = () => {
   const [charIndex, setCharIndex] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
-  const [lottieLoaded, setLottieLoaded] = useState(false)
 
   // Optimize AOS initialization
   useEffect(() => {
@@ -142,25 +140,10 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [handleTyping]);
 
-  // Lottie configuration with optimizations - using local file for faster loading
-  const lottieOptions = {
-    src: "/Portfolio/Coding.json",
-    loop: true,
-    autoplay: true,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-      progressiveLoad: false,
-    },
-    style: { 
-      width: "100%", 
-      height: "100%",
-      objectFit: 'cover'
-    },
-    className: `w-full h-full transition-all duration-500 ${
-      isHovering 
-        ? "scale-[180%] sm:scale-[160%] md:scale-[150%] lg:scale-[145%] rotate-2" 
-        : "scale-[175%] sm:scale-[155%] md:scale-[145%] lg:scale-[140%]"
-    }`
+  // Image configuration - Using static image for better performance
+  const imageOptions = {
+    src: "/Portfolio/Coding.gif",
+    alt: "Coding animation",
   };
 
   return (
@@ -228,14 +211,15 @@ const Home = () => {
                 <div className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${
                   isHovering ? "scale-105" : "scale-100"
                 }`}>
-                  {!lottieLoaded && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-2xl animate-pulse flex items-center justify-center">
-                      <span className="text-sm text-gray-400">Loading animation...</span>
-                    </div>
-                  )}
-                  <DotLottieReact 
-                    {...lottieOptions}
-                    onLoad={() => setLottieLoaded(true)}
+                  <img
+                    src={imageOptions.src}
+                    alt={imageOptions.alt}
+                    className={`w-full h-full object-cover rounded-2xl transition-all duration-500 ${
+                      isHovering 
+                        ? "scale-[180%] sm:scale-[160%] md:scale-[150%] lg:scale-[145%] rotate-2" 
+                        : "scale-[175%] sm:scale-[155%] md:scale-[145%] lg:scale-[140%]"
+                    }`}
+                    loading="lazy"
                   />
                 </div>
 
