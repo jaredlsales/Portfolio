@@ -5,6 +5,15 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen"
 
 const Certificate = ({ ImgSertif }) => {
 	const [open, setOpen] = useState(false)
+	
+	// 👇 ADICIONE ESTA LINHA - força atualização evitando cache
+	const imageUrl = `${ImgSertif}?t=${new Date().getTime()}`
+
+	// Debug: log da URL que está sendo usada
+	React.useEffect(() => {
+		console.log('🔍 Certificate recebeu ImgSertif:', ImgSertif);
+		console.log('🔗 URL final sendo carregada:', imageUrl);
+	}, [ImgSertif, imageUrl]);
 
 	const handleOpen = () => {
 		setOpen(true)
@@ -55,9 +64,10 @@ const Certificate = ({ ImgSertif }) => {
 							zIndex: 1,
 						},
 					}}>
+					{/* 👇 ALTERADO: ImgSertif para imageUrl */}
 					<img
 						className="certificate-image"
-						src={ImgSertif}
+						src={imageUrl}
 						alt="Certificate"
 						style={{
 							width: "100%",
@@ -68,6 +78,8 @@ const Certificate = ({ ImgSertif }) => {
 							transition: "filter 0.3s ease",
 						}}
 						onClick={handleOpen}
+						onLoad={() => console.log('✅ Imagem carregou no componente')}
+						onError={(e) => console.log('❌ Erro no componente:', e.target.src)}
 					/>
 				</Box>
 
@@ -176,9 +188,9 @@ const Certificate = ({ ImgSertif }) => {
 						<CloseIcon sx={{ fontSize: 24 }} />
 					</IconButton>
 
-					{/* Modal Image */}
+					{/* Modal Image - TAMBÉM ALTERADO para imageUrl */}
 					<img
-						src={ImgSertif}
+						src={imageUrl}
 						alt="Certificate Full View"
 						style={{
 							display: "block",

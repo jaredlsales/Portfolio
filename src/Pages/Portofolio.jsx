@@ -112,10 +112,15 @@ const techStacks = [
   { icon: "vite.svg", language: "Vite" },
   { icon: "nodejs.svg", language: "Node JS" },
   { icon: "bootstrap.svg", language: "Bootstrap" },
-  { icon: "firebase.svg", language: "Firebase" },
-  { icon: "MUI.svg", language: "Material UI" },
-  { icon: "vercel.svg", language: "Vercel" },
-  { icon: "SweetAlert.svg", language: "SweetAlert2" },
+  { icon: "typescript.svg", language: "Typescript" },
+  { icon: "prisma-2.svg", language: "Prisma" },
+  { icon: "mysql-3.svg", language: "MySQL" },
+  { icon: "figma-icon.svg", language: "Figma" },
+  { icon: "postman.svg", language: "Postman" },
+  //{ icon: "firebase.svg", language: "Firebase" },
+  //{ icon: "MUI.svg", language: "Material UI" },
+  //{ icon: "vercel.svg", language: "Vercel" },
+  //{ icon: "SweetAlert.svg", language: "SweetAlert2" },
 ];
 
 export default function FullWidthTabs() {
@@ -151,10 +156,21 @@ export default function FullWidthTabs() {
       const projectData = projectsResponse.data || [];
       const certificateData = certificatesResponse.data || [];
 
+      // 🔍 DEBUG: Log dos dados recebidos
+      console.log('📋 Projetos recebidos:', projectData);
+      console.log('📜 Certificados recebidos:', certificateData);
+      if (certificateData.length > 0) {
+        console.log('🔑 Chaves do primeiro certificado:', Object.keys(certificateData[0]));
+        console.log('📦 Primeiro certificado completo:', certificateData[0]);
+      }
+      certificateData.forEach((cert, idx) => {
+        console.log(`Certificado ${idx + 1}:`, cert);
+      });
+
       setProjects(projectData);
       setCertificates(certificateData);
 
-      // Store in localStorage (fungsionalitas ini tetap dipertahankan)
+      // Store in localStorage (fungsionalidade tetap dipertahankan)
       localStorage.setItem("projects", JSON.stringify(projectData));
       localStorage.setItem("certificates", JSON.stringify(certificateData));
     } catch (error) {
@@ -345,7 +361,7 @@ export default function FullWidthTabs() {
                     data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
                     data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
                   >
-                    <Certificate ImgSertif={certificate.Img} />
+                    <Certificate ImgSertif={certificate.file_url} />
                   </div>
                 ))}
               </div>
