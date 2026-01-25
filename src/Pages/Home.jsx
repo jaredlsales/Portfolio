@@ -142,7 +142,8 @@ const Home = () => {
   }, [handleTyping]);
 
   // Lottie configuration + poster + prefetch
-  const lottieSrc = "https://lottie.host/4953c6ff-f8b0-45cd-b667-baf472bba2ae/EHnn08K4mW.lottie";
+  // prefer local Coding.json (higher quality, faster)
+  const lottieSrc = "/Portfolio/Coding.json";
   const posterSrc = "/Portfolio/Meta.png"; // static poster shown while Lottie loads
   const [lottieLoaded, setLottieLoaded] = useState(false);
 
