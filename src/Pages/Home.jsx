@@ -140,10 +140,10 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [handleTyping]);
 
-  // Image configuration - Using high quality Meta.png image
+  // Image configuration - Using high quality image from internet
   const imageOptions = {
-    src: "/Portfolio/Meta.png",
-    alt: "Coding illustration",
+    src: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+    alt: "Web development workspace",
   };
 
   return (
