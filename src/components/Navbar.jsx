@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "../hooks/useTranslation";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("Home");
+    const t = useTranslation();
     
     const navItems = [
-        { href: "#Home", label: "Home" },
-        { href: "#About", label: "About" },
-        { href: "#Portofolio", label: "Portfolio" },
-        { href: "#Contact", label: "Contact" },
+        { href: "#Home", label: t.nav.home },
+        { href: "#About", label: t.nav.about },
+        { href: "#Portofolio", label: t.nav.portfolio },
+        { href: "#Contact", label: t.nav.contact },
     ];
 
     useEffect(() => {
@@ -116,6 +119,7 @@ const Navbar = () => {
                                     />
                                 </a>
                             ))}
+                            <LanguageSwitcher />
                         </div>
                     </div>
         

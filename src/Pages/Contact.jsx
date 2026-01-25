@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
+import { useTranslation } from "../hooks/useTranslation";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const ContactPage = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const t = useTranslation();
 
   useEffect(() => {
     AOS.init({
@@ -65,7 +67,7 @@ const ContactPage = () => {
      
       Swal.fire({
         title: 'Succeed!!',
-        text: 'Your message has been sent successfully!',
+        text: t.contact.success,
         icon: 'success',
         confirmButtonColor: '#6366f1',
         timer: 2000,
@@ -82,7 +84,7 @@ const ContactPage = () => {
       if (error.request && error.request.status === 0) {
         Swal.fire({
           title: 'Succeed!',
-          text: 'Your message has been sent successfully!!',
+          text: t.contact.success,
           icon: 'success',
           confirmButtonColor: '#6366f1',
           timer: 2000,
@@ -97,7 +99,7 @@ const ContactPage = () => {
       } else {
         Swal.fire({
           title: 'Failed!',
-          text: 'An error occurred. Please try again later.',
+          text: t.contact.error,
           icon: 'error',
           confirmButtonColor: '#6366f1'
         });
@@ -148,8 +150,8 @@ const ContactPage = () => {
           >
             <div className="flex justify-between items-start mb-8">
               <div>
-                <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
-                  Contact
+        <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
+                  {t.contact.title}
                 </h2>
                 <p className="text-gray-400">
                   Anything you'd like to discuss? Send me a message and let's talk.
@@ -171,7 +173,7 @@ const ContactPage = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Name"
+                  placeholder={t.contact.name}
                   value={formData.name}
                   onChange={handleChange}
                   disabled={isSubmitting}
@@ -188,7 +190,7 @@ const ContactPage = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder={t.contact.email}
                   value={formData.email}
                   onChange={handleChange}
                   disabled={isSubmitting}
@@ -204,7 +206,7 @@ const ContactPage = () => {
                 <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
                 <textarea
                   name="message"
-                  placeholder="Your Message"
+                  placeholder={t.contact.message}
                   value={formData.message}
                   onChange={handleChange}
                   disabled={isSubmitting}
@@ -220,7 +222,7 @@ const ContactPage = () => {
                 className="w-full bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#6366f1]/20 active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 <Send className="w-5 h-5" />
-                {isSubmitting ? 'Send...' : 'Send message'}
+                {isSubmitting ? t.contact.sending : t.contact.send}
               </button>
             </form>
 
