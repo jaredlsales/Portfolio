@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, memo } from "react"
 import { Github, Linkedin, Mail, ExternalLink, Instagram, Sparkles } from "lucide-react"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 // Memoized Components
 const StatusBadge = memo(() => (
@@ -140,16 +141,39 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [handleTyping]);
 
-  // Image configuration - Use high-quality Coding.gif from public
-  const imageOptions = {
-    src: "/Portfolio/Coding.gif",
-    alt: "Coding animation",
-    className: `w-full h-full object-contain rounded-2xl transition-all duration-500 ${
+  // Lottie configuration + poster + prefetch
+  const lottieSrc = "https://lottie.host/4953c6ff-f8b0-45cd-b667-baf472bba2ae/EHnn08K4mW.lottie";
+  const posterSrc = "/Portfolio/Meta.png"; // static poster shown while Lottie loads
+  const [lottieLoaded, setLottieLoaded] = useState(false);
+
+  useEffect(() => {
+    // warm cache: prefetch Lottie JSON
+    let cancelled = false;
+    fetch(lottieSrc, { cache: "reload" })
+      .then(res => res.ok ? res.blob() : null)
+      .then(() => {
+        if (!cancelled) {
+          // nothing to do here; DotLottieReact will still load, but this warms the cache
+        }
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
+  const lottieOptions = {
+    src: lottieSrc,
+    loop: true,
+    autoplay: true,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+      progressiveLoad: true,
+    },
+    style: { width: "100%", height: "100%" },
+    className: `w-full h-full transition-all duration-500 ${
       isHovering 
         ? "scale-[180%] sm:scale-[160%] md:scale-[150%] lg:scale-[145%] rotate-2" 
         : "scale-[175%] sm:scale-[155%] md:scale-[145%] lg:scale-[140%]"
-    }`,
-    loading: "eager",
+    }`
   };
 
   return (
@@ -217,12 +241,21 @@ const Home = () => {
                 <div className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${
                   isHovering ? "scale-105" : "scale-100"
                 }`}>
-                  <img
-                    src={imageOptions.src}
-                    alt={imageOptions.alt}
-                    className={imageOptions.className}
-                    loading={imageOptions.loading}
-                  />
+                  {/* Poster image shown until Lottie is ready */}
+                  {!lottieLoaded && (
+                    <img
+                      src={posterSrc}
+                      alt="Coding poster"
+                      className={`w-full h-full object-contain rounded-2xl transition-all duration-500 ${
+                        isHovering ? "scale-105 rotate-2 drop-shadow-2xl" : "scale-100 drop-shadow-lg"
+                      }`}
+                      loading="eager"
+                    />
+                  )}
+
+                  <div className={`absolute inset-0 transition-opacity duration-500 ${lottieLoaded ? 'opacity-100' : 'opacity-0'}`}>
+                    <DotLottieReact {...lottieOptions} onLoad={() => setLottieLoaded(true)} />
+                  </div>
                 </div>
 
                 <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
