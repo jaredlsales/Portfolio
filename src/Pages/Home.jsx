@@ -208,7 +208,7 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Right Column - Optimized Lottie Animation */}
+            {/* Right Column - Coding GIF Animation */}
             <div className="w-full py-[10%] sm:py-0 lg:w-1/2 h-auto lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-2 lg:order-2 mt-8 lg:mt-0"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
@@ -223,7 +223,11 @@ const Home = () => {
                 <div className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${
                   isHovering ? "scale-105" : "scale-100"
                 }`}>
-                  <DotLottieReact {...lottieOptions} />
+                  <img 
+                    src="/Portfolio/Coding.gif" 
+                    alt="Coding Animation" 
+                    className="w-full h-full object-contain"
+                  />
                 </div>
 
                 <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
