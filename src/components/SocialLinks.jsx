@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "../hooks/useTranslation";
 import {
   Linkedin,
   Github,
@@ -7,11 +8,9 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const socialLinks = [
+const baseLinks = [
   {
     name: "LinkedIn",
-    displayName: "Let's Connect",
-    subText: "on LinkedIn",
     icon: Linkedin,
     url: "https://www.linkedin.com/in/jared-sales/",
     color: "#0A66C2",
@@ -20,17 +19,34 @@ const socialLinks = [
   },
   {
     name: "GitHub",
-    displayName: "Github",
-    subText: "@jaredlsales",
     icon: Github,
     url: "https://github.com/jaredlsales",
     color: "#ffffff",
     gradient: "from-[#333] to-[#24292e]",
   },
-  // Comente ou remova os outros
 ];
 
 const SocialLinks = () => {
+  const t = useTranslation();
+
+  const socialLinks = baseLinks.map((link) => {
+    if (link.name === "LinkedIn") {
+      return {
+        ...link,
+        displayName: t.contact.social.linkedinTitle,
+        subText: t.contact.social.linkedinSub,
+      };
+    }
+    if (link.name === "GitHub") {
+      return {
+        ...link,
+        displayName: t.contact.social.githubTitle,
+        subText: t.contact.social.githubSub,
+      };
+    }
+    return link;
+  });
+
   const linkedIn = socialLinks.find((link) => link.isPrimary);
   const otherLinks = socialLinks.filter((link) => !link.isPrimary);
 
@@ -58,7 +74,7 @@ const SocialLinks = () => {
         data-aos="fade-down"
       >
         <span className="inline-block w-8 h-1 bg-indigo-500 rounded-full"></span>
-        Connect With Me
+        {t.contact.socialTitle}
       </h3>
 
       <div className="flex flex-col gap-4">

@@ -4,6 +4,7 @@ import { MessageCircle, UserCircle2, Loader2, AlertCircle, Send, ImagePlus, X, P
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { supabase } from '../supabase';
+import { useTranslation } from '../hooks/useTranslation';
 
 
 const Comment = memo(({ comment, formatDate, index, isPinned = false }) => (
@@ -226,6 +227,7 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
 });
 
 const Komentar = () => {
+    const t = useTranslation();
     const [comments, setComments] = useState([]);
     const [pinnedComment, setPinnedComment] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -388,7 +390,7 @@ const Komentar = () => {
                         <MessageCircle className="w-6 h-6 text-indigo-400" />
                     </div>
                     <h3 className="text-xl font-semibold text-white">
-                        Comments <span className="text-indigo-400">({totalComments})</span>
+                        {t.contact.commentsTitle} <span className="text-indigo-400">({totalComments})</span>
                     </h3>
                 </div>
             </div>
@@ -421,7 +423,7 @@ const Komentar = () => {
                     {comments.length === 0 && !pinnedComment ? (
                         <div className="text-center py-8" data-aos="fade-in">
                             <UserCircle2 className="w-12 h-12 text-indigo-400 mx-auto mb-3 opacity-50" />
-                            <p className="text-gray-400">No comments yet. Start the conversation!</p>
+                            <p className="text-gray-400">{t.contact.commentsEmpty}</p>
                         </div>
                     ) : (
                         comments.map((comment, index) => (
