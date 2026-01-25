@@ -92,6 +92,7 @@ const Home = () => {
   const [charIndex, setCharIndex] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
+  const [lottieLoaded, setLottieLoaded] = useState(false)
 
   // Optimize AOS initialization
   useEffect(() => {
@@ -141,16 +142,20 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [handleTyping]);
 
-  // Lottie configuration
+  // Lottie configuration with optimizations - using local file for faster loading
   const lottieOptions = {
-    src: "https://lottie.host/4953c6ff-f8b0-45cd-b667-baf472bba2ae/EHnn08K4mW.lottie",
+    src: "/Portfolio/Coding.json",
     loop: true,
     autoplay: true,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
-      progressiveLoad: true,
+      progressiveLoad: false,
     },
-    style: { width: "100%", height: "100%" },
+    style: { 
+      width: "100%", 
+      height: "100%",
+      objectFit: 'cover'
+    },
     className: `w-full h-full transition-all duration-500 ${
       isHovering 
         ? "scale-[180%] sm:scale-[160%] md:scale-[150%] lg:scale-[145%] rotate-2" 
@@ -223,7 +228,15 @@ const Home = () => {
                 <div className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${
                   isHovering ? "scale-105" : "scale-100"
                 }`}>
-                  <DotLottieReact {...lottieOptions} />
+                  {!lottieLoaded && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-2xl animate-pulse flex items-center justify-center">
+                      <span className="text-sm text-gray-400">Loading animation...</span>
+                    </div>
+                  )}
+                  <DotLottieReact 
+                    {...lottieOptions}
+                    onLoad={() => setLottieLoaded(true)}
+                  />
                 </div>
 
                 <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
