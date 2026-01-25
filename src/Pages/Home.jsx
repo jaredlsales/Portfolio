@@ -143,7 +143,7 @@ const Home = () => {
 
   // Lottie configuration
   const lottieOptions = {
-    src: "https://lottie.host/4953c6ff-f8b0-45cd-b667-baf472bba2ae/EHnn08K4mW.lottie",
+    src: "/Portfolio/Coding.json",
     loop: true,
     autoplay: true,
     rendererSettings: {
@@ -223,11 +223,7 @@ const Home = () => {
                 <div className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${
                   isHovering ? "scale-105" : "scale-100"
                 }`}>
-                  <img 
-                    src="/Portfolio/Coding.gif" 
-                    alt="Coding Animation" 
-                    className="w-full h-full object-contain"
-                  />
+                  <DotLottieReact {...lottieOptions} />
                 </div>
 
                 <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
