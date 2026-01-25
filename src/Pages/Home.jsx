@@ -140,10 +140,10 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [handleTyping]);
 
-  // Image configuration - Using static image for better performance
+  // Image configuration - Using high quality Meta.png image
   const imageOptions = {
-    src: "/Portfolio/Coding.gif",
-    alt: "Coding animation",
+    src: "/Portfolio/Meta.png",
+    alt: "Coding illustration",
   };
 
   return (
@@ -214,12 +214,13 @@ const Home = () => {
                   <img
                     src={imageOptions.src}
                     alt={imageOptions.alt}
-                    className={`w-full h-full object-cover rounded-2xl transition-all duration-500 ${
+                    className={`w-full h-full object-contain rounded-2xl transition-all duration-500 ${
                       isHovering 
-                        ? "scale-[180%] sm:scale-[160%] md:scale-[150%] lg:scale-[145%] rotate-2" 
-                        : "scale-[175%] sm:scale-[155%] md:scale-[145%] lg:scale-[140%]"
+                        ? "scale-110 rotate-2 drop-shadow-2xl" 
+                        : "scale-100 drop-shadow-lg"
                     }`}
-                    loading="lazy"
+                    loading="eager"
+                    quality="95"
                   />
                 </div>
 
