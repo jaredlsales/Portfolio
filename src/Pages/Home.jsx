@@ -45,22 +45,26 @@ const TechStack = memo(({ tech }) => (
   </div>
 ));
 
-const CTAButton = memo(({ href, text, icon: Icon }) => (
-  <a href={href}>
-    <button className="group relative w-[160px]">
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#4f52c9] to-[#8644c5] rounded-xl opacity-50 blur-md group-hover:opacity-90 transition-all duration-700"></div>
-      <div className="relative h-11 bg-[#030014] backdrop-blur-xl rounded-lg border border-white/10 leading-none overflow-hidden">
-        <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-gradient-to-r from-[#4f52c9]/20 to-[#8644c5]/20"></div>
-        <span className="absolute inset-0 flex items-center justify-center gap-2 text-sm group-hover:gap-3 transition-all duration-300">
-          <span className="bg-gradient-to-r from-gray-200 to-white bg-clip-text text-transparent font-medium z-10">
-            {text}
+const CTAButton = memo(({ href, text, icon: Icon }) => {
+  const t = useTranslation();
+  
+  return (
+    <a href={href}>
+      <button className="group relative w-[160px]">
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-[#4f52c9] to-[#8644c5] rounded-xl opacity-50 blur-md group-hover:opacity-90 transition-all duration-700"></div>
+        <div className="relative h-11 bg-[#030014] backdrop-blur-xl rounded-lg border border-white/10 leading-none overflow-hidden">
+          <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-gradient-to-r from-[#4f52c9]/20 to-[#8644c5]/20"></div>
+          <span className="absolute inset-0 flex items-center justify-center gap-2 text-sm group-hover:gap-3 transition-all duration-300">
+            <span className="bg-gradient-to-r from-gray-200 to-white bg-clip-text text-transparent font-medium z-10">
+              {text}
+            </span>
+            <Icon className={`w-4 h-4 text-gray-200 ${text === t.home.contactBtn ? 'group-hover:translate-x-1' : 'group-hover:rotate-45'} transform transition-all duration-300 z-10`} />
           </span>
-          <Icon className={`w-4 h-4 text-gray-200 ${text === t.home.contactBtn ? 'group-hover:translate-x-1' : 'group-hover:rotate-45'} transform transition-all duration-300 z-10`} />
-        </span>
-      </div>
-    </button>
-  </a>
-));
+        </div>
+      </button>
+    </a>
+  );
+});
 
 const SocialLink = memo(({ icon: Icon, link }) => (
   <a href={link} target="_blank" rel="noopener noreferrer">
@@ -77,7 +81,6 @@ const SocialLink = memo(({ icon: Icon, link }) => (
 const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
-const WORDS = ["UI/UX", "Tech Enthusiast", "Backend Developer", "Information Systems student"];
 const TECH_STACK = ["React", "Javascript", "Node.js", "Tailwind",];
 const SOCIAL_LINKS = [
   { icon: Github, link: "https://github.com/jaredlsales" },
@@ -93,6 +96,7 @@ const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
   const t = useTranslation()
+  const typingWords = t.home?.typingWords || ["UI/UX", "Tech Enthusiast", "Backend Developer", "Information Systems student"];
 
   // Optimize AOS initialization
   useEffect(() => {
@@ -117,8 +121,8 @@ const Home = () => {
   // Optimize typing effect
   const handleTyping = useCallback(() => {
     if (isTyping) {
-      if (charIndex < WORDS[wordIndex].length) {
-        setText(prev => prev + WORDS[wordIndex][charIndex]);
+      if (charIndex < typingWords[wordIndex].length) {
+        setText(prev => prev + typingWords[wordIndex][charIndex]);
         setCharIndex(prev => prev + 1);
       } else {
         setTimeout(() => setIsTyping(false), PAUSE_DURATION);
@@ -128,11 +132,11 @@ const Home = () => {
         setText(prev => prev.slice(0, -1));
         setCharIndex(prev => prev - 1);
       } else {
-        setWordIndex(prev => (prev + 1) % WORDS.length);
+        setWordIndex(prev => (prev + 1) % typingWords.length);
         setIsTyping(true);
       }
     }
-  }, [charIndex, isTyping, wordIndex]);
+  }, [charIndex, isTyping, typingWords, wordIndex]);
 
   useEffect(() => {
     const timeout = setTimeout(
@@ -209,7 +213,7 @@ const Home = () => {
                 }`}>
                   <img
                     src="/Portfolio/ImgHome.png"
-                    alt="Home showcase"
+                    alt={t.home?.imageAlt || "Home showcase"}
                     className={`w-full h-full object-contain rounded-2xl transition-all duration-500 ${
                       isHovering ? "scale-105 rotate-2 drop-shadow-2xl" : "scale-100 drop-shadow-lg"
                     }`}

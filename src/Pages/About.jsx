@@ -164,7 +164,7 @@ const AboutPage = () => {
       color: "from-[#6366f1] to-[#a855f7]",
       value: totalProjects,
       label: t.about.stats.projects,
-      description: "Innovative web solutions crafted",
+      description: t.about.statsDesc.projects,
       animation: "fade-right",
     },
     {
@@ -172,7 +172,7 @@ const AboutPage = () => {
       color: "from-[#a855f7] to-[#6366f1]",
       value: totalCertificates,
       label: t.about.stats.satisfaction,
-      description: "Professional skills validated",
+      description: t.about.statsDesc.satisfaction,
       animation: "fade-up",
     },
     {
@@ -180,7 +180,7 @@ const AboutPage = () => {
       color: "from-[#6366f1] to-[#a855f7]",
       value: YearExperience,
       label: t.about.stats.experience,
-      description: "Continuous learning journey",
+      description: t.about.statsDesc.experience,
       animation: "fade-left",
     },
   ], [totalProjects, totalCertificates, YearExperience, t]);
@@ -190,7 +190,7 @@ const AboutPage = () => {
       className="h-auto pb-[10%] text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] mt-10 sm-mt-0" 
       id="About"
     >
-      <Header title={t.about.title} subtitle="Transforming ideas into digital experiences" />
+      <Header title={t.about.title} subtitle={t.about.subtitle} />
 
       <div className="w-full mx-auto pt-8 sm:pt-12 relative">
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -201,14 +201,14 @@ const AboutPage = () => {
               data-aos-duration="1000"
             >
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
-                Hello, I'm
+                {t.about.greeting}
               </span>
               <span 
                 className="block mt-2 text-gray-200"
                 data-aos="fade-right"
                 data-aos-duration="1300"
               >
-                Jared Sales
+                {t.about.name}
               </span>
             </h2>
             
@@ -217,7 +217,7 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-             I have a degree in Systems Analysis and Development and a strong interest in front-end development. My focus is on creating engaging digital experiences, and I always strive to deliver the best solutions in every project I work on.
+             {t.about.bio}
             </p>
 
                {/* Quote Section */}
