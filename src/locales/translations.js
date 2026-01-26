@@ -13,7 +13,7 @@ export const translations = {
       typingWords: [
         "Information Systems student",
         "Tech Enthusiast",
-        "Frontend Developer",
+        "Backend Developer",
         "Transforming ideas into digital experiences",
       ],
       description: "Building innovative and efficient digital platforms with a total focus on user experience.",
@@ -50,6 +50,8 @@ export const translations = {
       technologies: "Technologies",
       github: "GitHub",
       live: "Live Demo",
+      demoNotAvailable: "Demo Not Available",
+      detailsNotAvailable: "Details Not Available",
     },
     contact: {
       heading: "Contact Me",
@@ -65,6 +67,19 @@ export const translations = {
         },
         commentsTitle: "Comments",
         commentsEmpty: "No comments yet. Start the conversation!",
+        commentForm: {
+          nameLabel: "Name",
+          namePlaceholder: "Enter your name",
+          messageLabel: "Message",
+          messagePlaceholder: "Write your message here...",
+          photoLabel: "Profile Photo",
+          photoOptional: "(optional)",
+          choosePhoto: "Choose Profile Photo",
+          maxFileSize: "Max file size: 5MB",
+          postButton: "Post Comment",
+          posting: "Posting...",
+          removePhoto: "Remove Photo",
+        },
       subtitle: "Let's work together",
       name: "Full Name",
       email: "Email Address",
@@ -79,6 +94,12 @@ export const translations = {
     footer: {
       rights: "All rights reserved.",
       followMe: "Follow me",
+    },
+    notFound: {
+      title: "Oops! Page Not Found",
+      description: "The page you are looking for may have moved, been deleted, or may not have existed.",
+      goBack: "Go Back",
+      goHome: "Go Home",
     },
   },
   pt: {
@@ -95,7 +116,7 @@ export const translations = {
       typingWords: [
         "Estudante de Sistemas de Informação",
         "Entusiasta de Tecnologia",
-        "Desenvolvedor Frontend",
+        "Desenvolvedor Backend",
         "Transformando ideias em experiências digitais",
       ],
       description: "Construindo plataformas digitais inovadoras e eficientes com foco total na experiência do usuário.",
@@ -132,6 +153,8 @@ export const translations = {
       technologies: "Tecnologias",
       github: "GitHub",
       live: "Demo ao Vivo",
+      demoNotAvailable: "Demo Não Disponível",
+      detailsNotAvailable: "Detalhes Não Disponíveis",
     },
     contact: {
       heading: "Fale Comigo",
@@ -147,6 +170,19 @@ export const translations = {
         },
         commentsTitle: "Comentários",
         commentsEmpty: "Ainda não há comentários. Inicie a conversa!",
+        commentForm: {
+          nameLabel: "Nome",
+          namePlaceholder: "Digite seu nome",
+          messageLabel: "Mensagem",
+          messagePlaceholder: "Escreva sua mensagem aqui...",
+          photoLabel: "Foto de Perfil",
+          photoOptional: "(opcional)",
+          choosePhoto: "Escolher Foto de Perfil",
+          maxFileSize: "Tamanho máximo: 5MB",
+          postButton: "Publicar Comentário",
+          posting: "Publicando...",
+          removePhoto: "Remover Foto",
+        },
       subtitle: "Vamos trabalhar juntos",
       name: "Nome Completo",
       email: "Endereço de Email",
@@ -161,6 +197,12 @@ export const translations = {
     footer: {
       rights: "Todos os direitos reservados.",
       followMe: "Me siga",
+    },
+    notFound: {
+      title: "Ops! Página Não Encontrada",
+      description: "A página que você está procurando pode ter sido movida, excluída ou pode não ter existido.",
+      goBack: "Voltar",
+      goHome: "Ir para Início",
     },
   },
   it: {
@@ -177,7 +219,7 @@ export const translations = {
       typingWords: [
         "Studente di Sistemi Informativi",
         "Appassionato di Tecnologia",
-        "Sviluppatore Frontend",
+        "Sviluppatore Backend",
         "Trasformare idee in esperienze digitali",
       ],
       description: "Creando piattaforme digitali innovative ed efficienti con totale focus sull'esperienza utente.",
@@ -214,6 +256,8 @@ export const translations = {
       technologies: "Tecnologie",
       github: "GitHub",
       live: "Demo Live",
+      demoNotAvailable: "Demo Non Disponibile",
+      detailsNotAvailable: "Dettagli Non Disponibili",
     },
     contact: {
       heading: "Contattami",
@@ -229,6 +273,19 @@ export const translations = {
         },
         commentsTitle: "Commenti",
         commentsEmpty: "Nessun commento ancora. Inizia la conversazione!",
+        commentForm: {
+          nameLabel: "Nome",
+          namePlaceholder: "Inserisci il tuo nome",
+          messageLabel: "Messaggio",
+          messagePlaceholder: "Scrivi il tuo messaggio qui...",
+          photoLabel: "Foto Profilo",
+          photoOptional: "(opzionale)",
+          choosePhoto: "Scegli Foto Profilo",
+          maxFileSize: "Dimensione massima: 5MB",
+          postButton: "Pubblica Commento",
+          posting: "Pubblicazione...",
+          removePhoto: "Rimuovi Foto",
+        },
       subtitle: "Lavoriamo insieme",
       name: "Nome Completo",
       email: "Indirizzo Email",
@@ -243,6 +300,12 @@ export const translations = {
     footer: {
       rights: "Tutti i diritti riservati.",
       followMe: "Seguimi",
+    },
+    notFound: {
+      title: "Ops! Pagina Non Trovata",
+      description: "La pagina che stai cercando potrebbe essere stata spostata, eliminata o potrebbe non essere mai esistita.",
+      goBack: "Torna Indietro",
+      goHome: "Vai alla Home",
     },
   },
 };

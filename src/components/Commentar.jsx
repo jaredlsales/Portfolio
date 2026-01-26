@@ -65,6 +65,7 @@ const Comment = memo(({ comment, formatDate, index, isPinned = false }) => (
 ));
 
 const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
+    const t = useTranslation();
     const [newComment, setNewComment] = useState('');
     const [userName, setUserName] = useState('');
     const [imagePreview, setImagePreview] = useState(null);
@@ -122,14 +123,14 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
         <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2" data-aos="fade-up" data-aos-duration="1000">
                 <label className="block text-sm font-medium text-white">
-                    Name <span className="text-red-400">*</span>
+                    {t.contact.commentForm.nameLabel} <span className="text-red-400">*</span>
                 </label>
                 <input
                     type="text"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                      maxLength={15}
-                    placeholder="Enter your name"
+                    placeholder={t.contact.commentForm.namePlaceholder}
                     className="w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
                     required
                 />
@@ -137,7 +138,7 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
 
             <div className="space-y-2" data-aos="fade-up" data-aos-duration="1200">
                 <label className="block text-sm font-medium text-white">
-                    Message <span className="text-red-400">*</span>
+                    {t.contact.commentForm.messageLabel} <span className="text-red-400">*</span>
                 </label>
                 <textarea
                     ref={textareaRef}
@@ -145,7 +146,7 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                      maxLength={200}
 
                     onChange={handleTextareaChange}
-                    placeholder="Write your message here..."
+                    placeholder={t.contact.commentForm.messagePlaceholder}
                     className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none min-h-[120px]"
                     required
                 />
@@ -153,7 +154,7 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
 
             <div className="space-y-2" data-aos="fade-up" data-aos-duration="1400">
                 <label className="block text-sm font-medium text-white">
-                    Profile Photo <span className="text-gray-400">(optional)</span>
+                    {t.contact.commentForm.photoLabel} <span className="text-gray-400">{t.contact.commentForm.photoOptional}</span>
                 </label>
                 <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl">
                     {imagePreview ? (
@@ -173,7 +174,7 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-all group"
                             >
                                 <X className="w-4 h-4" />
-                                <span>Remove Photo</span>
+                                <span>{t.contact.commentForm.removePhoto}</span>
                             </button>
                         </div>
                     ) : (
@@ -191,10 +192,10 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                                 className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500/30 transition-all border border-dashed border-indigo-500/50 hover:border-indigo-500 group"
                             >
                                 <ImagePlus className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                <span>Choose Profile Photo</span>
+                                <span>{t.contact.commentForm.choosePhoto}</span>
                             </button>
                             <p className="text-center text-gray-400 text-sm mt-2">
-                                Max file size: 5MB
+                                {t.contact.commentForm.maxFileSize}
                             </p>
                         </div>
                     )}
@@ -212,12 +213,12 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                     {isSubmitting ? (
                         <>
                             <Loader2 className="w-4 h-4 animate-spin" />
-                            <span>Posting...</span>
+                            <span>{t.contact.commentForm.posting}</span>
                         </>
                     ) : (
                         <>
                             <Send className="w-4 h-4" />
-                            <span>Post Comment</span>
+                            <span>{t.contact.commentForm.postButton}</span>
                         </>
                     )}
                 </div>
