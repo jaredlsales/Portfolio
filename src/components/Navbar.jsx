@@ -170,14 +170,14 @@ const Navbar = () => {
                         </a>
                     ))}
                     <div 
-                        className="px-4 py-2"
+                        className="border-t border-white/10 pt-4 mt-4"
                         style={{
                             transitionDelay: `${navItems.length * 100}ms`,
                             transform: isOpen ? "translateX(0)" : "translateX(50px)",
                             opacity: isOpen ? 1 : 0,
                         }}
                     >
-                        <LanguageSwitcher />
+                        <LanguageSwitcher isMobile={true} />
                     </div>
                 </div>
             </div>
