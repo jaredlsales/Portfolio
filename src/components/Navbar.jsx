@@ -169,6 +169,16 @@ const Navbar = () => {
                             {item.label}
                         </a>
                     ))}
+                    <div 
+                        className="px-4 py-2"
+                        style={{
+                            transitionDelay: `${navItems.length * 100}ms`,
+                            transform: isOpen ? "translateX(0)" : "translateX(50px)",
+                            opacity: isOpen ? 1 : 0,
+                        }}
+                    >
+                        <LanguageSwitcher />
+                    </div>
                 </div>
             </div>
         </nav>
