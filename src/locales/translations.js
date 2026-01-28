@@ -33,11 +33,11 @@ export const translations = {
       stats: {
         projects: "Projects Completed",
         experience: "Years Experience",
-        satisfaction: "Client Satisfaction",
+        satisfaction: "Certificates",
       },
       statsDesc: {
         projects: "Innovative web solutions crafted",
-        satisfaction: "Professional skills validated",
+        satisfaction: "Professional certifications earned",
         experience: "Continuous learning journey",
       },
       quote: "Leveraging AI as a professional tool, not a replacement.",
@@ -136,11 +136,11 @@ export const translations = {
       stats: {
         projects: "Projetos Completos",
         experience: "Anos de Experiência",
-        satisfaction: "Satisfação do Cliente",
+        satisfaction: "Certificados",
       },
       statsDesc: {
         projects: "Soluções web inovadoras criadas",
-        satisfaction: "Habilidades profissionais validadas",
+        satisfaction: "Certificações profissionais obtidas",
         experience: "Jornada de aprendizado contínuo",
       },
       quote: "Aproveitando IA como ferramenta profissional, não como substituição.",
@@ -239,11 +239,11 @@ export const translations = {
       stats: {
         projects: "Progetti Completati",
         experience: "Anni di Esperienza",
-        satisfaction: "Soddisfazione dei Clienti",
+        satisfaction: "Certificati",
       },
       statsDesc: {
         projects: "Soluzioni web innovative realizzate",
-        satisfaction: "Competenze professionali validate",
+        satisfaction: "Certificazioni professionali ottenute",
         experience: "Percorso di apprendimento continuo",
       },
       quote: "Sfruttare l'IA come strumento professionale, non come sostituzione.",
